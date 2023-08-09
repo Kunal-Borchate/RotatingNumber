@@ -1,0 +1,52 @@
+import java.util.Scanner;
+
+public class RotatingNumber 
+{
+	public static int count(int num)
+	{
+		int ct=0;
+		while(num!=0)
+		{
+			num/=10;
+			ct++;
+		}
+		return ct-1;
+	}
+	
+	public static int power(int base,int raise)
+	{
+		int pow=1;
+		while(raise>0)
+		{
+			pow*=base;
+			raise--;
+		}
+		return pow;
+	}
+	
+	public static int rotate(int num)
+	{
+	 
+		return num%10*power(10,count(num))+num/10;
+	  
+	}
+	
+	public static void abc(int num,int rotations)
+	{   
+      while(rotations>0)
+			{
+				int a=rotate(num);
+				num=a;
+				rotations--;
+			}
+			System.out.println(num);	
+	}
+	public static void main(String[] args) {
+		Scanner sc=new Scanner(System.in);
+		System.out.println("Enter the number");
+		int num=sc.nextInt();
+		System.out.println("Enter the number of rotations");
+		int rotations=sc.nextInt();
+		abc(num,rotations);
+	}
+}
